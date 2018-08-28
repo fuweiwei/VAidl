@@ -32,6 +32,7 @@
         </service>
         <service
             android:name="com.veer.aidl.BinderService">
+        <!--android:process=":remote"-->
         </service>
 
     </application>

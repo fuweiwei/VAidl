@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 
 public class BinderActivity extends AppCompatActivity {
     private BinderService.MyBinder mMyBinder;
@@ -19,6 +20,17 @@ public class BinderActivity extends AppCompatActivity {
         //绑定服务
         Intent intent = new Intent(BinderActivity.this,BinderService.class);
         bindService(intent, conn, BIND_AUTO_CREATE);
+        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMyBinder.setMessage("从客服端发来的Binder请求",new CallBack() {
+                    @Override
+                    public void sendMsg(String s) {
+                        Log.i("Binder_Client", s );
+                    }
+                });
+            }
+        });
     }
     /**
      * 服务回调方法
@@ -27,12 +39,6 @@ public class BinderActivity extends AppCompatActivity {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             mMyBinder = (BinderService.MyBinder) service;
-            mMyBinder.setMessage("从客服端发来的Binder请求",new CallBack() {
-                @Override
-                public void sendMsg(String s) {
-                    Log.i("Binder_Client", s );
-                }
-            });
         }
 
         @Override

@@ -71,5 +71,11 @@ public class MessengerActivity extends AppCompatActivity {
         public void onServiceDisconnected(ComponentName name) {
         }
     };
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //解绑服务，回收资源
+        unbindService(mCoon);
+    }
 
 }
