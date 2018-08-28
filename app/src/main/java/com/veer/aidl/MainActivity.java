@@ -1,41 +1,36 @@
 package com.veer.aidl;
 
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
-    private MyService.MyBinder mMyBinder;
-    private TextView mTvClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("服务端");
-        mTvClient = (TextView) findViewById(R.id.tv_client);
-        Intent intent = new Intent(this,MyService.class);
-        bindService(intent, mSCoon, BIND_AUTO_CREATE);
+        findViewById(R.id.btn_aidl).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,AidlActivity.class));
+            }
+        });
+        findViewById(R.id.btn_Messenger).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,MessengerActivity.class));
+            }
+        });
+        findViewById(R.id.btn_Binder).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,BinderActivity.class));
+            }
+        });
     }
 
 
-    private ServiceConnection mSCoon = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            mMyBinder = (MyService.MyBinder) IMyAidlInterface.Stub.asInterface(service);
-            mMyBinder.setActivity(MainActivity.this);
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-            mSCoon = null;
-        }
-    };
-    public void setText(String s){
-        mTvClient.setText(s);
-    }
 }

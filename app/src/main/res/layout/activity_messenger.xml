@@ -7,24 +7,18 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" tools:context="com.veer.aidl.MainActivity">
 
-    <Button
-        android:id="@+id/btn_Binder"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:text="Binder进程间通信"  />
-    <Button
-        android:id="@+id/btn_Messenger"
+        android:text="来自客户端的信息："  />
+    <TextView
+        android:id="@+id/tv_client"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:text="Messenger进程间通信"  />
-    <Button
-        android:id="@+id/btn_aidl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="AIDL进程间通信"  />
+        android:text="xx"  />
+
 
 
 </LinearLayout>

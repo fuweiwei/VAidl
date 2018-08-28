@@ -11,14 +11,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AidlActivity"/>
+        <activity android:name=".MessengerActivity"/>
+        <activity android:name=".BinderActivity"/>
         <service
             android:exported="true"
             android:enabled="true"
-            android:name="com.veer.aidl.MyService">
+            android:name="com.veer.aidl.AidlService">
             <intent-filter>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <action android:name="com.veer.aidl.MyService"/>
+                <action android:name="com.veer.aidl.AidlService"/>
             </intent-filter>
+        </service>
+        <service
+            android:exported="true"
+            android:enabled="true"
+            android:name="com.veer.aidl.MessengerService">
+            <intent-filter>
+                <action android:name="com.veer.aidl.MessengerService"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.veer.aidl.BinderService">
         </service>
 
     </application>
